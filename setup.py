@@ -96,7 +96,7 @@ try:
     if fn in ["Makefile", "MANIFEST", "MANIFEST.in"]: continue
     dataFiles.append((os.path.dirname(fn), [fn]))
 except IOError:
-  print "Unable to open MANIFEST. Please run python setup.py sdist -o to generate it."
+  print("Unable to open MANIFEST. Please run python setup.py sdist -o to generate it.")
   dataFiles = []
 
 extraOpts = {}

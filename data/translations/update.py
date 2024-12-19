@@ -25,12 +25,12 @@ translations = {
 
 files = ["fretsonfire", "tutorial"]
 
-for id, lang in translations.items():
-  print "%s:" % lang,
+for id, lang in list(translations.items()):
+  print("%s:" % lang, end=' ')
   f = ["%s_%s.po" % (fn, id) for fn in files]
   ret = os.system("msgcat " + " ".join(f) + " | msgfmt - -o %s.mo" % lang)
   if not ret:
-    print "ok"
+    print("ok")
   else:
-    print "error", ret
+    print("error", ret)
   
