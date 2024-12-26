@@ -24,10 +24,10 @@
 
 import Log
 import Config
-import Image
+from PIL import Image
 import pygame
 import io
-import PngImagePlugin
+from PIL import PngImagePlugin
 from OpenGL.GL import *
 from OpenGL.GLU import *
 from queue import Queue, Empty
