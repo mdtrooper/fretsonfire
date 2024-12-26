@@ -28,7 +28,7 @@ import os
 import re
 import shutil
 import Config
-import sha
+import hashlib
 import binascii
 import Cerealizer
 import urllib.request, urllib.parse, urllib.error
@@ -167,7 +167,7 @@ class SongInfo(object):
     self._set("artist", value)
     
   def getScoreHash(self, difficulty, score, stars, name):
-    return sha.sha("%d%d%d%s" % (difficulty.id, score, stars, name)).hexdigest()
+    return hashlib.sha("%d%d%d%s" % (difficulty.id, score, stars, name)).hexdigest()
     
   def getDelay(self):
     return self._get("delay", int, 0)

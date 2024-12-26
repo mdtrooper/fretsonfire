@@ -129,7 +129,7 @@ logger = logging.getLogger("cerealizer")
 #logging.basicConfig(level=logging.INFO)
 
 from io import StringIO
-from new       import instance
+from types import SimpleNamespace as instance
 
 class NotCerealizerFileError(Exception): pass
 class NonCerealizableObjectError(Exception): pass
@@ -481,7 +481,7 @@ A Cerealizer Handler that can support class instances with __getnewargs__."""
   def undump_obj(self, dumper, s): return self.Class_new(self.Class, *dumper.undump_ref(s))
   
   
-_configurable = 1
+_configurable = True
 _HANDLERS  = {}
 _HANDLERS_ = {}
 def register(Class, handler = None, classname = ""):
@@ -557,10 +557,8 @@ unexpected calls to register()."""
   
 register(type(None), NoneHandler     ())
 register(str       , StrHandler      ())
-register(str   , UnicodeHandler  ())
 register(bool      , BoolHandler     ())
 register(int       , IntHandler      ())
-register(int      , LongHandler     ())
 register(float     , FloatHandler    ())
 register(complex   , ComplexHandler  ())
 register(dict      , DictHandler     ())
